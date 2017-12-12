@@ -94,20 +94,7 @@
   <script src='dist/lib.js'></script>
   <script src='dist/site.js'></script>
   <script src="lib/jquery-1.10.2.min.js"></script>
-  <!-- <script src='search.js'></script> -->
   <script>
-    // $(document).ready(function(){
-    //   $("#submit").click(function(){
-    //     // $.post("http://localhost:3000/login",{bounds: [1,2,3,4]}, function(data){
-    //     //   if(data==='done')
-    //     //     {
-    //     //       alert("login success");
-    //     //     }
-    //     // });
-    //   });
-    // });
-
-
 
   </script>
   <script type='text/javascript'>
@@ -121,10 +108,6 @@
       ga('create', 'UA-12158002-18', 'auto');
       ga('send', 'pageview');
     }
-
-    $.getJSON('https://gist.github.com/DanRunfola/211d9dd9bc57f3cc62d37238b6e03b7c', function( d ) {
-      window.api.data.set({map: d});
-    });
 
     var b = document.createElement("BUTTON");
     b.innerHTML = 'Search';
@@ -164,7 +147,7 @@
         type: 'POST',
         data: JSON.stringify({"bounds": [sw,ne,nw,se]}),
         contentType: 'application/json',
-        url: 'http://localhost:3000/search',
+        url: 'http://128.239.111.60:3000/search',
         success: function(data) {
           for(var x=0;x<data.length;x++){
             var i = document.createElement('div');
@@ -191,7 +174,7 @@
                   type: 'POST',
                   data: JSON.stringify({"gist": uri}),
                   contentType: 'application/json',
-                  url: 'http://localhost:3000/gist',
+                  url: 'http://128.239.111.60:3000/gist',
                   success: function(data) {
                     
                     window.api.data.set({map: data});

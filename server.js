@@ -11,31 +11,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 var http = require("http");
 var https = require("https");
 
-function getJSON(options, onResult) {
-
-    var port = options.port == 443 ? https : http;
-    var req = port.request(options, function(res)
-    {
-        var output = '';
-        console.log(options.host + ':' + res.statusCode);
-        res.setEncoding('utf8');
-
-        res.on('data', function (chunk) {
-            output += chunk;
-        });
-
-        res.on('end', function() {
-            var obj = JSON.parse(output);
-            onResult(res.statusCode, obj);
-        });
-    });
-
-    req.on('error', function(err) {
-    });
-
-    req.end();
-};
-
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*"); 
     res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE'); 
